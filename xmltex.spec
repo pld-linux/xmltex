@@ -19,7 +19,7 @@ BuildRequires:	tetex-format-pdflatex
 Requires(post):	grep
 Requires(post):	textutils
 Requires(post,postun):	/usr/bin/texhash
-Autoreqprov:	no
+AutoReqProv:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
