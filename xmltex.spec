@@ -5,7 +5,7 @@
 #
 
 Summary:	Namespace-aware XML parser written in TeX
-Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu
+Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
 Version:	20020625
 Release:	3
@@ -27,7 +27,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Namespace-aware XML parser written in TeX.
 
 %description -l pl
-Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu.
+Uwzglêdniaj±cy przestrzenie nazw analizator sk³adniowy XML-a napisany
+w TeXu.
 
 %prep
 %setup -q -c %{name}-%{version}
