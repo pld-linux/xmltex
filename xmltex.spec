@@ -4,9 +4,9 @@ Version:	20000118
 Release:	3
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
+Group(de):	Applikationen/Publizieren/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
-##Source0:	ftp://ftp.icm.edu.pl/pub/CTAN/macros/xmltex/base.tar.gz
-Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/xmltex.tar.gz
+Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 Requires:	/usr/bin/pdftex
 Requires:	/usr/bin/tex
 Autoreqprov:	no
@@ -27,14 +27,13 @@ tex -ini "&hugelatex" xmltex.ini
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
-install -d $RPM_BUILD_ROOT%{_datadir}/texmf/web2c
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT{%{_datadir}/texmf/{tex/xmltex,web2c},%{_bindir}}
 
 install *.xmt $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install %{name}.cfg $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
+
 ln -s pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
 ln -s tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 
