@@ -26,7 +26,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	texmfsysvar	/var/lib/texmf
-%define texmf		/usr/share/texmf
+%define	texmf		/usr/share/texmf
 
 %description
 Namespace-aware XML parser written in TeX.
