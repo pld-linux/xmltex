@@ -1,7 +1,7 @@
 Summary:	Namespace-aware XML parser written in TeX
 Name:		xmltex
 Version:	20000118
-Release:	2
+Release:	3
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
@@ -32,6 +32,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/texmf/web2c
 install -d $RPM_BUILD_ROOT%{_bindir}
 
 install *.xmt $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
+install %{name}.cfg $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 ln -s pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
@@ -53,3 +54,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz *.html
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/texmf/web2c/*
+%{_datadir}/texmf/tex/xmltex
