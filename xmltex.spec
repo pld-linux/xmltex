@@ -1,12 +1,10 @@
 Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu
 Name:		xmltex
-Version:	20000118
-Release:	6
+Version:	20020625
+Release:	2
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
-Group(de):	Applikationen/Publizieren/TeX
-Group(pl):	Aplikacje/Publikowanie/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 Requires:	/usr/bin/pdftex
 Requires:	/usr/bin/tex
@@ -42,8 +40,6 @@ install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 ln -sf pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
 ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 
-gzip -9nf readme.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -52,31 +48,31 @@ rm -rf $RPM_BUILD_ROOT
 
 cat >> /usr/share/texmf/web2c/texmf.cnf  << END
 
-% xmltext & pdfxmltex config 
+% xmltext & pdfxmltex config
 
 TEXINPUTS.pdfxmltex   = .;\$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
 % xmltex & pdfxmltex
- main_memory.xmltex = 1500000
- param_size.xmltex = 1500
- stack_size.xmltex = 1500
- hash_extra.xmltex = 50000
- string_vacancies.xmltex = 45000
- pool_free.xmltex = 47500
- nest_size.xmltex = 500
- save_size.xmltex = 10000
- pool_size.xmltex = 500000
- max_strings.xmltex = 55000
- main_memory.pdfxmltex = 2500000
- param_size.pdfxmltex = 1500
- stack_size.pdfxmltex = 1500
- hash_extra.pdfxmltex = 50000
- string_vacancies.pdfxmltex = 45000
- pool_free.pdfxmltex = 47500
- nest_size.pdfxmltex = 500
- save_size.pdfxmltex = 10000
- pool_size.pdfxmltex = 500000
- max_strings.pdfxmltex = 55000
- % end of xmltex config
+main_memory.xmltex = 1500000
+param_size.xmltex = 1500
+stack_size.xmltex = 1500
+hash_extra.xmltex = 50000
+string_vacancies.xmltex = 45000
+pool_free.xmltex = 47500
+nest_size.xmltex = 500
+save_size.xmltex = 10000
+pool_size.xmltex = 500000
+max_strings.xmltex = 55000
+main_memory.pdfxmltex = 2500000
+param_size.pdfxmltex = 1500
+stack_size.pdfxmltex = 1500
+hash_extra.pdfxmltex = 50000
+string_vacancies.pdfxmltex = 45000
+pool_free.pdfxmltex = 47500
+nest_size.pdfxmltex = 500
+save_size.pdfxmltex = 10000
+pool_size.pdfxmltex = 500000
+max_strings.pdfxmltex = 55000
+% end of xmltex config
 END
 
 %postun
@@ -84,7 +80,7 @@ END
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz *.html
+%doc readme.txt *.html
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/texmf/web2c/*
 %{_datadir}/texmf/tex/xmltex
