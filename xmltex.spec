@@ -1,4 +1,5 @@
 Summary:	Namespace-aware XML parser written in TeX
+Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu
 Name:		xmltex
 Version:	20000118
 Release:	6
@@ -16,12 +17,14 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Namespace-aware XML parser written in TeX
+Namespace-aware XML parser written in TeX.
+
+%description -l pl
+Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu.
 
 %prep
 %setup -q -c %{name}-%{version}
 mv -f xmltex/base/* .
-
 
 %build
 pdftex -ini "&pdflatex" pdfxmltex.ini
@@ -36,8 +39,8 @@ install %{name}.cfg $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 
-ln -s pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
-ln -s tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
+ln -sf pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
+ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 
 gzip -9nf readme.txt
 
@@ -47,7 +50,6 @@ rm -rf $RPM_BUILD_ROOT
 %post
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
 
-%postin
 cat >> /usr/share/texmf/web2c/texmf.cnf  << END
 
 % xmltext & pdfxmltex config 
