@@ -42,8 +42,6 @@ install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 ln -sf pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
 ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 
-gzip -9nf readme.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -84,7 +82,7 @@ END
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz *.html
+%doc readme.txt *.html
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/texmf/web2c/*
 %{_datadir}/texmf/tex/xmltex
