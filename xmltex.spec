@@ -8,20 +8,25 @@ Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
 Version:	20020625
-Release:	3
+Release:	4
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 # Source0-md5:	6fc7903420f585fc0f072d4411f67727
-BuildRequires:	tetex-format-plain
-BuildRequires:	tetex-format-pdftex
-BuildRequires:	tetex-format-pdflatex
+BuildRequires:	tetex-format-plain >= 1:3.0
+BuildRequires:	tetex-format-pdftex >= 1:3.0
+BuildRequires:	tetex-format-pdflatex >= 1:3.0
 Requires(post):	grep
 Requires(post):	textutils
 Requires(post,postun):	/usr/bin/texhash
+%requires_eq	tetex
+%requires_eq	tetex-latex
 AutoReqProv:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define	texmfsysvar	/var/lib/texmf
+%define texmf		/usr/share/texmf
 
 %description
 Namespace-aware XML parser written in TeX.
@@ -35,20 +40,20 @@ w TeXu.
 mv -f xmltex/base/* .
 
 %build
-pdftex -ini "&pdflatex" pdfxmltex.ini
-tex -ini "&latex" xmltex.ini
+pdfetex -ini "&pdflatex" pdfxmltex.ini
+etex -ini "&latex" xmltex.ini
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/texmf/{tex/xmltex,web2c},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{texmf}/tex/xmltex,%{texmfsysvar}/web2c,%{_bindir}}
 
-install *.xmt $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
-install %{name}.cfg $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
-install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
-install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
+install *.xmt $RPM_BUILD_ROOT%{texmf}/tex/xmltex
+install %{name}.cfg $RPM_BUILD_ROOT%{texmf}/tex/xmltex
+install pdf%{name}.fmt $RPM_BUILD_ROOT%{texmfsysvar}/web2c/
+install %{name}.fmt $RPM_BUILD_ROOT%{texmfsysvar}/web2c/
 
-ln -sf pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
-ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
+ln -sf pdfetex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
+ln -sf etex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
 
 if ! grep -q 'TEXINPUTS\.pdfxmltex' /usr/share/texmf/web2c ; then
-cat >> /usr/share/texmf/web2c/texmf.cnf << END
+cat >> %{texmf}/web2c/texmf.cnf << END
 
 % xmltext & pdfxmltex config
 
@@ -94,5 +99,5 @@ fi
 %defattr(644,root,root,755)
 %doc readme.txt *.html
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/texmf/web2c/*
-%{_datadir}/texmf/tex/xmltex
+%{texmfsysvar}/web2c/*
+%{texmf}/tex/xmltex
