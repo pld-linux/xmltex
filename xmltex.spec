@@ -1,7 +1,7 @@
 Summary:	Namespace-aware XML parser written in TeX
 Name:		xmltex
 Version:	20000118
-Release:	5
+Release:	6
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Group(de):	Applikationen/Publizieren/TeX
@@ -52,7 +52,7 @@ cat >> /usr/share/texmf/web2c/texmf.cnf  << END
 
 % xmltext & pdfxmltex config 
 
-TEXINPUTS.pdfxmltex   = .;$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
+TEXINPUTS.pdfxmltex   = .;\$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
 % xmltex & pdfxmltex
  main_memory.xmltex = 1500000
  param_size.xmltex = 1500
