@@ -24,11 +24,11 @@ pdftex -ini "&pdflatex" pdfxmltex.ini
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/texmf/pdftex/xmltex
+install -d $RPM_BUILD_ROOT%{_datadir}/texmf/web2c \
 install -d $RPM_BUILD_ROOT%{_bindir}
 
-install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/pdftex/%{name}
-ln -s tex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
+install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
+ln -s pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
 
 gzip -9nf readme.txt
 
@@ -45,4 +45,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz *.html
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/texmf/pdftex/*
+%{_datadir}/texmf/web2c/*
