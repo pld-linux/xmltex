@@ -12,12 +12,11 @@ Release:	2
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
+BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-pdflatex
 Requires(post):	/usr/bin/texhash
 Requires(postun):	/usr/bin/texhash
-BuildRequires:	tetex-format-pdftex
-BuildRequires:	tetex-format-pdflatex
 Autoreqprov:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
