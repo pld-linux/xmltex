@@ -1,6 +1,6 @@
 Summary:	Namespace-aware XML parser written in TeX
 Name:		xmltex
-Version:	0
+Version:	20000118
 Release:	1
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
@@ -43,6 +43,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.gz *.html
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/texmf/pdftex/*
