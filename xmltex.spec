@@ -15,8 +15,9 @@ Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-pdflatex
-Requires(post):	/usr/bin/texhash
-Requires(postun):	/usr/bin/texhash
+Requires(post):	grep
+Requires(post):	textutils
+Requires(post,postun):	/usr/bin/texhash
 Autoreqprov:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
 
+if ! grep -q 'TEXINPUTS\.pdfxmltex' /usr/share/texmf/web2c ; then
 cat >> /usr/share/texmf/web2c/texmf.cnf  << END
 
 % xmltext & pdfxmltex config
@@ -81,6 +83,7 @@ pool_size.pdfxmltex = 500000
 max_strings.pdfxmltex = 55000
 % end of xmltex config
 END
+fi
 
 %postun
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
