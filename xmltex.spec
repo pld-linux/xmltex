@@ -1,7 +1,7 @@
 Summary:	Namespace-aware XML parser written in TeX
 Name:		xmltex
 Version:	20000118
-Release:	3
+Release:	4
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Group(de):	Applikationen/Publizieren/TeX
@@ -9,6 +9,8 @@ Group(pl):	Aplikacje/Publikowanie/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 Requires:	/usr/bin/pdftex
 Requires:	/usr/bin/tex
+%requires_eq	tetex
+%requires_eq	tetex-pdftex
 Autoreqprov:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
