@@ -1,7 +1,7 @@
 Summary:	Namespace-aware XML parser written in TeX
 Name:		xmltex
 Version:	20000118
-Release:	4
+Release:	5
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Group(de):	Applikationen/Publizieren/TeX
@@ -46,6 +46,36 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
+
+%postin
+cat >> /usr/share/texmf/web2c/texmf.cnf  << END
+
+% xmltext & pdfxmltex config 
+
+TEXINPUTS.pdfxmltex   = .;$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
+% xmltex & pdfxmltex
+ main_memory.xmltex = 1500000
+ param_size.xmltex = 1500
+ stack_size.xmltex = 1500
+ hash_extra.xmltex = 50000
+ string_vacancies.xmltex = 45000
+ pool_free.xmltex = 47500
+ nest_size.xmltex = 500
+ save_size.xmltex = 10000
+ pool_size.xmltex = 500000
+ max_strings.xmltex = 55000
+ main_memory.pdfxmltex = 2500000
+ param_size.pdfxmltex = 1500
+ stack_size.pdfxmltex = 1500
+ hash_extra.pdfxmltex = 50000
+ string_vacancies.pdfxmltex = 45000
+ pool_free.pdfxmltex = 47500
+ nest_size.pdfxmltex = 500
+ save_size.pdfxmltex = 10000
+ pool_size.pdfxmltex = 500000
+ max_strings.pdfxmltex = 55000
+ % end of xmltex config
+END
 
 %postun
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
