@@ -1,3 +1,9 @@
+
+#
+# TODO: 
+# - split into format packages
+#
+
 Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu
 Name:		xmltex
@@ -6,10 +12,11 @@ Release:	2
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
-Requires:	/usr/bin/pdftex
-Requires:	/usr/bin/tex
-%requires_eq	tetex
-%requires_eq	tetex-pdftex
+BuildRequires:	tetex-format-plain
+BuildRequires:	tetex-format-pdftex
+BuildRequires:	tetex-format-pdflatex
+Requires(post):	/usr/bin/texhash
+Requires(postun):	/usr/bin/texhash
 Autoreqprov:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -26,7 +33,7 @@ mv -f xmltex/base/* .
 
 %build
 pdftex -ini "&pdflatex" pdfxmltex.ini
-tex -ini "&hugelatex" xmltex.ini
+tex -ini "&latex" xmltex.ini
 
 %install
 rm -rf $RPM_BUILD_ROOT
