@@ -5,8 +5,8 @@ Release:	1
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
-Source0:	ftp://ftp.icm.edu.pl/pub/CTAN/macros/xmltex/base.tar.gz
-##Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/xmltex/base.zip
+##Source0:	ftp://ftp.icm.edu.pl/pub/CTAN/macros/xmltex/base.tar.gz
+Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/xmltex.tar.gz
 Autoreqprov:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -16,17 +16,19 @@ Namespace-aware XML parser written in TeX
 
 %prep
 %setup -q -c %{name}-%{version}
-mv -f base/* .
-rmdir base
+mv -f xmltex/base/* .
+
 
 %build
 pdftex -ini "&pdflatex" pdfxmltex.ini
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/texmf/web2c \
+install -d $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
+install -d $RPM_BUILD_ROOT%{_datadir}/texmf/web2c
 install -d $RPM_BUILD_ROOT%{_bindir}
 
+install *.xmt $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
 ln -s pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
 
