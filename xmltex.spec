@@ -12,6 +12,7 @@ Release:	3
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
+# Source0-md5:	6fc7903420f585fc0f072d4411f67727
 BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-pdflatex
