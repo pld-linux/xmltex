@@ -1,12 +1,11 @@
 Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu
 Name:		xmltex
-Version:	20000907
+Version:	20020625
 Release:	2
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
-Source1:	%{name}.tex
 Requires:	/usr/bin/pdftex
 Requires:	/usr/bin/tex
 %requires_eq	tetex
@@ -24,7 +23,6 @@ Uwzglêdniaj±cy przestrzenie nazw parser XML napisany w TeXu.
 %prep
 %setup -q -c %{name}-%{version}
 mv -f xmltex/base/* .
-install %{SOURCE1} .
 
 %build
 pdftex -ini "&pdflatex" pdfxmltex.ini
