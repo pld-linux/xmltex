@@ -57,11 +57,11 @@ rm -rf $RPM_BUILD_ROOT
 [ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
 
 if ! grep -q 'TEXINPUTS\.pdfxmltex' /usr/share/texmf/web2c ; then
-cat >> /usr/share/texmf/web2c/texmf.cnf  << END
+cat >> /usr/share/texmf/web2c/texmf.cnf << END
 
 % xmltext & pdfxmltex config
 
-TEXINPUTS.pdfxmltex   = .;\$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
+TEXINPUTS.pdfxmltex = .;\$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
 % xmltex & pdfxmltex
 main_memory.xmltex = 1500000
 param_size.xmltex = 1500
