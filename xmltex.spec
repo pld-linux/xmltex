@@ -8,7 +8,7 @@ Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
 Version:	20020625
-Release:	3
+Release:	4
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
