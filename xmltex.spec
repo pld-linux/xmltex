@@ -54,7 +54,10 @@ ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-[ -x %{_bindir}/texhash ] && /usr/bin/env - %{_bindir}/texhash 1>&2
+[ ! -x %{_bindir}/texhash ] || /usr/bin/env - %{_bindir}/texhash 1>&2
+
+%postun
+[ ! -x %{_bindir}/texhash ] || /usr/bin/env - %{_bindir}/texhash 1>&2
 
 if ! grep -q 'TEXINPUTS\.pdfxmltex' /usr/share/texmf/web2c ; then
 cat >> /usr/share/texmf/web2c/texmf.cnf << END
