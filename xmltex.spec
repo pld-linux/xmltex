@@ -31,7 +31,7 @@ Uwzglêdniaj±cy przestrzenie nazw analizator sk³adniowy XML-a napisany
 w TeXu.
 
 %prep
-%setup -q -c %{name}-%{version}
+%setup -q -c
 mv -f xmltex/base/* .
 
 %build
