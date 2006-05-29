@@ -1,9 +1,5 @@
-
-#
 # TODO:
 # - split into format packages
-#
-
 Summary:	Namespace-aware XML parser written in TeX
 Summary(pl):	Uwzglêdniaj±cy przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
@@ -13,9 +9,9 @@ License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 # Source0-md5:	6fc7903420f585fc0f072d4411f67727
-BuildRequires:	tetex-format-plain
-BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-pdflatex
+BuildRequires:	tetex-format-pdftex
+BuildRequires:	tetex-format-plain
 Requires(post):	grep
 Requires(post):	textutils
 Requires(post,postun):	/usr/bin/texhash
@@ -57,11 +53,11 @@ rm -rf $RPM_BUILD_ROOT
 [ ! -x %{_bindir}/texhash ] || /usr/bin/env - %{_bindir}/texhash 1>&2
 
 if ! grep -q 'TEXINPUTS\.pdfxmltex' /usr/share/texmf/web2c ; then
-cat >> /usr/share/texmf/web2c/texmf.cnf << END
+cat >> /usr/share/texmf/web2c/texmf.cnf << 'END'
 
 % xmltext & pdfxmltex config
 
-TEXINPUTS.pdfxmltex = .;\$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
+TEXINPUTS.pdfxmltex = .;$TEXMF/{pdftex,tex}/{xmltex,latex,generic,}//
 % xmltex & pdfxmltex
 main_memory.xmltex = 1500000
 param_size.xmltex = 1500
