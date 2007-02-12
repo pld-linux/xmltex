@@ -1,7 +1,7 @@
 # TODO:
 # - split into format packages
 Summary:	Namespace-aware XML parser written in TeX
-Summary(pl.UTF-8):   Uwzględniający przestrzenie nazw analizator XML-a napisany w TeXu
+Summary(pl.UTF-8):	Uwzględniający przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
 Version:	20020625
 Release:	4
