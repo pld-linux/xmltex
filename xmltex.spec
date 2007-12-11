@@ -1,11 +1,10 @@
 # TODO:
-# anyone is able to rebuild this on his environment? 
 # - split into format packages
 Summary:	Namespace-aware XML parser written in TeX
 Summary(pl.UTF-8):	Uwzględniający przestrzenie nazw analizator XML-a napisany w TeXu
 Name:		xmltex
 Version:	20020625
-Release:	4.1
+Release:	5
 License:	LaTeX Project Public License (http://www.latex-project.org/lppl.txt)
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
