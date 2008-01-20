@@ -12,6 +12,7 @@ Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-plain
+Requires:	pdftex
 Requires(post):	grep
 Requires(post):	textutils
 Requires(post,postun):	/usr/bin/texhash
