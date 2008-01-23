@@ -12,10 +12,10 @@ Source0:	ftp://ftp.tex.ac.uk/tex-archive/macros/%{name}.tar.gz
 BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-format-pdftex
 BuildRequires:	tetex-format-plain
-Requires:	pdftex
 Requires(post):	grep
 Requires(post):	textutils
 Requires(post,postun):	/usr/bin/texhash
+Requires:	tetex-pdftex
 AutoReqProv:	no
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,11 +41,11 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/texmf/{tex/xmltex,web2c},%{_bindir}}
 
 install *.xmt $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
 install %{name}.cfg $RPM_BUILD_ROOT%{_datadir}/texmf/tex/xmltex
-install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
-install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c/
+install pdf%{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c
+install %{name}.fmt $RPM_BUILD_ROOT%{_datadir}/texmf/web2c
 
-ln -sf pdftex ${RPM_BUILD_ROOT}%{_bindir}/pdf%{name}
-ln -sf tex ${RPM_BUILD_ROOT}%{_bindir}/%{name}
+ln -sf pdftex $RPM_BUILD_ROOT%{_bindir}/pdf%{name}
+ln -sf tex $RPM_BUILD_ROOT%{_bindir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
